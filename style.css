@@ -1,109 +1,118 @@
-/* Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: url('MEDICINE.JPG') no-repeat center center fixed;
-    animation: fadeIn 1s ease-in-out;
-    background-size: cover;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: #333;
+    gap: 15px;
 }
 
-/* Sign-Up Page Styles */
-.sign-up-container {
-    background: rgba(255, 255, 255, 0.9); /* Slight transparency */
-    padding: 20px; /* Reduced padding */
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 100%;  /* Full width of the container */
-    max-width: 250px; /* Set max-width to a smaller size */
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
+nav ul li {
+    list-style: none;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.sign-up-container h2 {
-    margin-bottom: 5px; /* Reduced margin */
-    font-size: 1.5em; /* Slightly smaller font size */
-    color: #0fa061;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.input-group {
-    margin-bottom: 7px; /* Reduced margin */
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #17946c;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 8px; /* Reduced padding */
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    box-sizing: border-box;
-    font-size: 0.9em; /* Smaller font size */
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.input-group input:focus {
-    border-color: #1fab0f;
-    box-shadow: 0 0 8px rgba(0, 121, 107, 0.3);
-    outline: none;
-}
-
-.sign-up-button {
-    background: linear-gradient(100deg, #28b013, #167010);
+nav ul li a {
     color: white;
-    padding: 10px; /* Reduced padding */
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1em; /* Slightly smaller font size */
-    font-weight: bold;
-    margin-top: 20px;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.sign-up-button:hover {
-    background: linear-gradient(135deg, #57cb18, #57cb18);
-    transform: translateY(-2px);
-}
-
-.sign-up-container p {
-    margin-top: 15px; /* Reduced margin */
-    font-size: 0.9em; /* Smaller font size */
-    color: #333;
-}
-
-.sign-up-container p a {
-    color: #1e7715;
-    font-weight: bold;
     text-decoration: none;
-    transition: color 0.3s;
+    padding: 10px 20px;
+    background-color: #555;
+    border-radius: 5px;
 }
 
-.sign-up-container p a:hover {
-    color: #004d40;
-    text-decoration: underline;
+nav ul li a:hover {
+    background-color: #777;
+}
+
+.panel {
+    margin: 20px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 10px;
+}
+
+.grid-item {
+    background-color: #e3e3e3;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color:#333;
+    color: white;
+}
+
+table th, table td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+button{
+    padding: 10px 10px;
+    margin: 5px;
 }

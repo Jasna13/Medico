@@ -89,10 +89,37 @@ header{
     background-color: #333;
     color: #fff;
 }
+
+
+button:hover {
+    background-color:#333;
+}
+
+#add-user-form, #modify-staff-form {
+    margin: 30px 0;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 1rem;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 table thead {
@@ -100,28 +127,32 @@ table thead {
     color: white;
 }
 
-table thead th {
-    padding: 25px;
+table th, table td {
+    padding: 15px;
     text-align: left;
-}
-
-table tbody tr {
-    background-color: #f9f9f9;
     border-bottom: 1px solid #ddd;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #f1f1f1;
-}
-
-table tbody td {
-    padding: 15px;
-}
-
-table tbody td:last-child {
-    font-weight: bold;
+    background-color: #f9f9f9;
 }
 
 table tbody tr:hover {
-    background-color: #f1f5ff;
+    background-color: #f1f1f1;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color:#333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 2px -2px gray;
+}
+
+footer p {
+    margin: 0;
 }

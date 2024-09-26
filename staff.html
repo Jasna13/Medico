@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+    <link rel="stylesheet" href="s.css">
+    <script src="staff.js" defer></script> <!-- Link to external JavaScript file -->
+</head>
+<body>
+    <header>
+        <h1>Staff Management</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="products.html">Product Management</a></li>
+                <li><a href="stock.html">Stock Management</a></li>
+                <li><a href="staff.html">Staff Management</a></li>
+                <li><a href="order.html">Order Management</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="management" class="panel">
+        <h2>Manage Staff</h2>
+
+        <!-- Section to display staff present today -->
+        <div id="staff-present-today">
+            <h3>Staff Present Today</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Shift</th>
+                    </tr>
+                </thead>
+                <tbody id="present-staff-list">
+                    <!-- Staff present today will be dynamically inserted here -->
+                    <!-- Example Static Data -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Manager</td>
+                        <td>Morning</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Cashier</td>
+                        <td>Afternoon</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section to display staff with update and delete options -->
+        <div id="staff-management">
+            <h3>Staff List</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="staff-list">
+                    <!-- Staff will be dynamically inserted here -->
+                    <!-- Example Static Data -->
+                    <tr>
+                        <td>john_doe</td>
+                        <td>john@example.com</td>
+                        <td>Admin</td>
+                        <td>
+                            <button onclick="updateStaff('john_doe')">Update</button>
+                            <button onclick="deleteStaff('john_doe')">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>jane_smith</td>
+                        <td>jane@example.com</td>
+                        <td>User</td>
+                        <td>
+                            <button onclick="updateStaff('jane_smith')">Update</button>
+                            <button onclick="deleteStaff('jane_smith')">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Form to add a new staff member -->
+        <div id="add-staff-form">
+            <h3>Add New Staff</h3>
+            <form id="new-staff-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role" required>
+                <button type="submit">Add Staff</button>
+                <button type="button" onclick="hideAddStaffForm()">Cancel</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Admin Dashboard</p>
+    </footer>
+</body>
+</html>

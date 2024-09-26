@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        let products = [
+            { id: 1, name: 'Product A', price: 100, stock: 50 },
+            { id: 2, name: 'Product B', price: 150, stock: 30 },
+            { id: 3, name: 'Product C', price: 200, stock: 20 }
+        ];
+
+        function displayProducts() {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+            products.forEach(product => {
+                const row = `<tr>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.stock}</td>
+                    <td><button onclick="editProduct(${product.id})">Edit</button></td>
+                    <td><button onclick="deleteProduct(${product.id})">Delete</button></td>
+                </tr>`;
+                productList.innerHTML += row;
+            });
+        }
+
+        function addProduct() {
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const stock = document.getElementById('stock').value;
+            const id = products.length ? products[products.length - 1].id + 1 : 1;
+            products.push({ id, name, price: parseFloat(price), stock: parseInt(stock) });
+            displayProducts();
+            clearForm();
+        }
+
+        function editProduct(id) {
+            const product = products.find(p => p.id === id);
+            document.getElementById('product-id').value = product.id;
+            document.getElementById('name').value = product.name;
+            document.getElementById('price').value = product.price;
+            document.getElementById('stock').value = product.stock;
+            document.getElementById('add-button').style.display = 'none';
+            document.getElementById('update-button').style.display = 'inline';
+        }
+
+        function updateProduct() {
+            const id = parseInt(document.getElementById('product-id').value);
+            const name = document.getElementById('name').value;
+            const price = parseFloat(document.getElementById('price').value);
+            const stock = parseInt(document.getElementById('stock').value);
+            const product = products.find(p => p.id === id);
+            product.name = name;
+            product.price = price;
+            product.stock = stock;
+            displayProducts();
+            clearForm();
+        }
+
+        function deleteProduct(id) {
+            products = products.filter(p => p.id !== id);
+            displayProducts();
+        }
+
+        function clearForm() {
+            document.getElementById('product-id').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('stock').value = '';
+            document.getElementById('add-button').style.display = 'inline';
+            document.getElementById('update-button').style.display = 'none';
+        }
+
+        window.onload = displayProducts;
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Product Management</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="products.html">Product Management</a></li>
+                <li><a href="stock.html">Stock Management</a></li>
+                <li><a href="staff.html">Staff Management</a></li>
+                <li><a href="order.html">Order Management</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="products" class="panel">
+        <h2>Manage Products</h2>
+        <form onsubmit="event.preventDefault(); addProduct();" id="product-form">
+            <input type="hidden" id="product-id">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" required>
+            <label for="price">Price:</label>
+            <input type="number" id="price" step="0.01" required>
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" required>
+            <button type="submit" id="add-button">Add Product</button>
+            <button type="button" id="update-button" style="display: none;" onclick="updateProduct()">Update Product</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <!-- Product rows will be displayed here -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Admin Dashboard</p>
+    </footer>
+</body>
+</html>
