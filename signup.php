@@ -20,7 +20,7 @@
             </div>
             <div class="input-group">
                 <label for="phone_number">Phone Number</label>
-                <input type="number" id="phone_number" name="phone_number" min="600000000" max="9999999999" required>
+                <input type="number" id="phone_number" name="phone_number" min="1000000000" max="9999999999" required>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
@@ -30,66 +30,43 @@
                 <label for="confirm_password">Confirm Password</label>
                 <input type="password" id="confirm_password" name="confirm_password" required>
             </div>
-            <button type="submit" class="sign-up-button">Sign Up</button>
+            <div class="input-group">
+                <label for="role">Role: </label>
+                <select class="form-control" name="role">
+                    <option>User</option>
+                </select>
+            </div>
+            <button type="submit" class="sign-up-button" name="submit">Sign Up</button>
         </form>
-        <p>Already have an account? <a href="login.html">Login here</a></p>
+        <p>Already have an account? <a href="login.php">Login here</a></p>
     </div>
 </body>
 </html>
-<?php
-// Connect to the database
-$servername = "localhost";
-$username = "root";  // Replace with your database username
-$password = "root";      // Replace with your database password
-$dbname = "medico_shop";  // Replace with your database name
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-else{
-    echo "Connected successfully";
-}
+<?php 
+include("connection.php");
 
 if (isset($_POST['submit'])) {
-    $user_name = $_POST['username'];
+    $uname = $_POST['username'];
     $email = $_POST['email'];
-    $phone_number = $_POST['phone_number'];
+    $phno = $_POST['phone_number'];
     $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-    echo "sucessful";
+    $cpwd =$_POST['confirm_password'];
+    $role=$_POST['role'];
 
-    // Validate the form data
-    if ($password !== $confirm_password) {
-        echo "Passwords do not match.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format.";
-    } elseif (!preg_match('/^[0-9]{10}$/', $phone_number)) {
-        echo "Invalid phone number.";
-    } else {
-        // Hash the password for security
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    if ($password === $cpwd) {
+        // Insert into the database
+        $sql = "INSERT INTO user (username, email, phone_number, password,utype) VALUES ('$uname', '$email', '$phno', '$password','$role')";
+        $result = mysqli_query($con, $sql);
 
-        // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO users (username, email, phone_number, password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $user_name, $email, $phone_number, $hashed_password);
-
-        // Execute the query
-        if ($stmt->execute()) {
-            echo "Registration successful!";
-        } 
-        else {
-            echo "Error: " . $stmt->error;
+        if ($result) {
+            echo '<script>alert("Successfully inserted")</script>';
+            header("Location: login.php"); // Redirect back to the sign-up page
+    
+        } else {
+            echo '<script>alert("Failed to insert")</script>';
         }
-
-        // Close the statement
-        $stmt->close();
+    } else {
+        echo '<script>alert("Passwords do not match")</script>';
     }
 }
-
-// Close the connection
-$conn->close();
 ?>
-
